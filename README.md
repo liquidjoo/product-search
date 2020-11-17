@@ -24,3 +24,21 @@ User
 - Like
 - Storage
 - info
+
+
+
+Spring Cloud Config Setting (RDB Backend)
+스키마 정보
+    https://github.com/spring-cloud/spring-cloud-config/blob/master/spring-cloud-config-server/src/test/resources/schema-jdbc.sql
+    KEY 가 예약어 이므로 변경 
+    ```
+        CREATE TABLE PROPERTIES (
+          `PROPERTY_KEY` VARCHAR(2048),
+          `PROPERTY_VALUE` VARCHAR(4096),
+          `APPLICATION` VARCHAR(128),
+          `PROFILE` VARCHAR(128),
+          `LABEL` VARCHAR(128)
+        );
+    ```
+    
+
