@@ -33,12 +33,13 @@ Spring Cloud Config Setting (RDB Backend)
     KEY 가 예약어 이므로 변경 
     ```
         CREATE TABLE PROPERTIES (
-          `PROPERTY_KEY` VARCHAR(2048),
-          `PROPERTY_VALUE` VARCHAR(4096),
-          `APPLICATION` VARCHAR(128),
-          `PROFILE` VARCHAR(128),
-          `LABEL` VARCHAR(128)
+          `PROPERTY_KEY` VARCHAR(2048),  
+          `PROPERTY_VALUE` VARCHAR(4096),  
+          `APPLICATION` VARCHAR(128),  
+          `PROFILE` VARCHAR(128),  
+          `LABEL` VARCHAR(128)  
         );
     ```
-    
 
+cloud config server 의 8888 port를 사용하는 관례가 있어서 설정  
+`spring.profiles.active=jdbc` jdbc로 설정 해줘야함 (jdbc backend 사용 시) 
