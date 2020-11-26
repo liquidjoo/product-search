@@ -1,10 +1,22 @@
+
 #spring.cloud.config.label=local
 
 #spring.cloud.config.discovery.enabled=true
 
-spring.application.name=token
-spring.profiles.active=dev
-#spring.cloud.config.label=master
+spring:
+  application:
+    name: token
+  profiles:
+    active: dev
+  cloud:
+    config:
+      uri: http://localhost:8888
 
-spring.config.activate.on-profile=dev
-spring.cloud.config.uri=http://localhost:8888
+#  config:
+#    activate:
+#      on-profile: dev
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ['refresh']

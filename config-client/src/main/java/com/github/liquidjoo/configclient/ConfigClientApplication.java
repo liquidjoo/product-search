@@ -2,15 +2,13 @@ package com.github.liquidjoo.configclient;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.cloud.context.refresh.ContextRefresher;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,28 +24,27 @@ public class ConfigClientApplication {
     public static class DefaultController {
 
         private ApplicationConfiguration applicationConfiguration;
-        private ContextRefresher contextRefresher;
+//        private ContextRefresher contextRefresher;
 
-        public DefaultController(final ApplicationConfiguration applicationConfiguration, final ContextRefresher contextRefresher) {
+        public DefaultController(final ApplicationConfiguration applicationConfiguration) {
             this.applicationConfiguration = applicationConfiguration;
-            this.contextRefresher = contextRefresher;
         }
 
         @GetMapping("/test")
         public void get() {
-            log.info("{}", applicationConfiguration.toString());
+            log.info("{}", applicationConfiguration.getToken());
 
         }
     }
 
     @RefreshScope
     @Configuration
-    @ConfigurationProperties(prefix = "local")
+    @ConfigurationProperties(prefix = "api")
     @Getter
-    @ToString
+    @Setter
     public static class ApplicationConfiguration {
 
-        private String test;
+        private String token;
     }
 
 }
